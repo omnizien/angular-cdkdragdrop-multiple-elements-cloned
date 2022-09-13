@@ -1,0 +1,41 @@
+<div cdkDropListGroup>
+  <div class="example-container">
+
+
+
+    <div cdkDropList #divBoard [cdkDropListData]="bigList" cdkDropListSortingDisabled="true" class="big-list"
+      (cdkDropListDropped)="drop($event)">
+
+      <!-- [style.z-index]="this.bigList[i].z_index " -->
+   <div>
+      <div 
+      cdkDrag
+      class="example-box2" 
+      *ngFor="let item of bigList;let i=index;" 
+      (drag)="dragging()"
+      
+       (cdkDragEnded)="dragEnded($event)"
+    
+        (cdkDragMoved)="dragMoved($event)"
+         [style.margin-top.px]="item.top" 
+         [style.margin-left.px]="item.left"
+       
+       
+         
+       >{{item.name}} {{ this.bigList[i].z_index}}</div>
+    </div>
+ 
+
+
+</div>
+
+ 
+ 
+<div class="example-container">
+
+  <div style="background-color:rgb(164, 164, 255);" cdkDropList cdkDropListSortingDisabled="true"
+    [cdkDropListData]="bottomList" class="bottom-list" cdkDropListOrientation="horizontal">
+    <div class="example-box" *ngFor="let item of bottomList" (cdkDragMoved)="dragMoved($event)"
+      (cdkDragEnded)="dragEnded($event)" cdkDrag>{{item.name}}</div>
+  </div>
+</div>
